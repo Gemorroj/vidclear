@@ -1,10 +1,9 @@
 <?php 
 class VidClearDownloader
 {
-    protected $headers = array();
-    protected $headers_sent = false;
+    private $headers_sent = false;
 
-    protected $debug = false;
+    private $debug = false;
 
     protected function sendHeader($header)
     {
@@ -46,7 +45,7 @@ class VidClearDownloader
 
             $parts = explode(':', $data, 2);
 
-            if ($this->headers_sent && count($parts) == 2 && in_array(trim(strtolower($parts[0])), $forward)) {
+            if ($this->headers_sent && count($parts) == 2 && in_array(strtolower(trim($parts[0])), $forward)) {
                 $this->sendHeader(rtrim($data));
             }
         }
@@ -79,7 +78,7 @@ class VidClearDownloader
         curl_setopt($ch, CURLOPT_FRESH_CONNECT, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
@@ -89,6 +88,10 @@ class VidClearDownloader
         $ret = curl_exec($ch);
         $error = ($ret === false) ? sprintf('curl error: %s, num: %s', curl_error($ch), curl_errno($ch)) : null;
         curl_close($ch);
+        if ($error) {
+            echo $error;
+            exit;
+        }
     }
 }
 
@@ -99,8 +102,9 @@ if ( !empty($_GET['token']) ) {
 
     $deJson = json_decode($token);
 
-    header('Content-Disposition: attachment; filename="'.$deJson->filename.'-'.time().'.'.$deJson->type.'"');
+    header('Content-Disposition: attachment; filename="'.rawurlencode($deJson->filename).'-'.time().'.'.$deJson->type.'"');
 
+    \set_time_limit(1800);
     $video->stream($deJson->url);
 } else {
     echo 'Silence is Golden!';

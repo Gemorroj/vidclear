@@ -10,7 +10,7 @@
         curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($process, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($process, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($process, CURLOPT_SSL_VERIFYHOST, 0);
 
         //Begin::Proxy
         $proxy = Proxy::where('banned', false)->inRandomOrder()->first();
@@ -39,7 +39,7 @@
         curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($process, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($process, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($process, CURLOPT_SSL_VERIFYHOST, 0);
 
         //Begin::Proxy
         $proxy = Proxy::where('banned', false)->inRandomOrder()->first();
@@ -66,7 +66,7 @@
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_ENCODING, '');
         curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
         curl_setopt($ch, CURLOPT_TIMEOUT, 0);
@@ -113,7 +113,7 @@
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36');
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -174,7 +174,7 @@
         curl_setopt($ch, CURLOPT_AUTOREFERER, false);
         curl_setopt($ch, CURLOPT_REFERER, 'https://www.tiktok.com/');
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
@@ -217,7 +217,7 @@
         curl_setopt($ch, CURLOPT_AUTOREFERER, false);
         curl_setopt($ch, CURLOPT_REFERER, 'https://www.tiktok.com/');
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
@@ -269,7 +269,7 @@
         curl_setopt($ch, CURLOPT_COOKIEFILE, __DIR__ . '/../../storage/app/tt-cookie.txt');
         curl_setopt($ch, CURLOPT_REFERER, 'https://www.tiktok.com/');
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
@@ -326,8 +326,8 @@
         curl_setopt($process, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($process, CURLOPT_POST, 1);
-        curl_setopt($process, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($process, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($process, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($process,CURLOPT_CAINFO, NULL);
         curl_setopt($process,CURLOPT_CAPATH, NULL);
 
@@ -397,7 +397,7 @@
         curl_setopt($curl, CURLOPT_NOBODY, true);
         curl_setopt($curl, CURLOPT_HEADER, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
